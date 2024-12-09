@@ -1,0 +1,29 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  width: 95%;
+  margin: auto 17px 0;
+}
+
+.footer__button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.footer__button_disabled {
+  cursor: auto;
+}
+
+.footer__button_active {
+  padding: 10px;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
