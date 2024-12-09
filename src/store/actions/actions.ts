@@ -7,17 +7,17 @@ export const addNewItem = (item: String) => {
   }
 };
 
-export const removeItem = (item: Number) => {
+export const removeItem = (item: number) => {
   return {
     type: 'REMOVE_ITEM',
     payload: item
   }
 };
 
-export const completedItem = (item: Number) => {
+export const completedItem = (item: number, status: boolean) => {
   return {
     type: 'COMPLETED_ITEM',
-    payload: item
+    payload: {item, status}
   }
 };
 

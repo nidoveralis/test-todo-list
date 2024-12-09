@@ -25,7 +25,7 @@ const Item: React.FC<Props> = ({ elem }) => {
   }
 
   function handlerClickCheckbox() {
-    dispatch(completedItem(elem.id));
+    dispatch(completedItem(elem.id, !elem.status));
   }
 
   return (

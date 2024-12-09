@@ -19,8 +19,11 @@ function Foooter() {
   const noCompletedItem = todolist.filter((item: ItemProps) => !item.status);
 
   function handlerClickBtnClearCompleted() {
+    const checkList = todolist.filter((el: ItemProps) => el.status);
+    const isCheck = checkList.length === todolist.length;
+
     todolist.forEach((el: ItemProps) => {
-      dispatch(completedItem(el.id))
+      dispatch(completedItem(el.id, !isCheck))
     });
   };
 

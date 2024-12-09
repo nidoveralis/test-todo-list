@@ -39,8 +39,8 @@ export const listTasks: Reducer<ArrayProps, AnyAction> = (state = initialState, 
       };
     case 'COMPLETED_ITEM':
       const updatedTodoList = state.todolist.map((el) => {
-        if (el.id === action.payload) {
-          return { ...el, status: !el.status };
+        if (el.id === action.payload.item) {
+          return { ...el, status: action.payload.status };
         }
         return el;
       });
