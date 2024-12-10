@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import cn from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -12,7 +12,7 @@ import styles from './Form.module.css';
 function Form() {
   const dispatch = useDispatch();
 
-  const { searchResults } = useSelector((state: RootState) => state.listTasks.listTasks);
+  const { todolist, searchResults } = useSelector((state: RootState) => state.listTasks.listTasks);
 
   const [error, setError] = React.useState<string>('');
   const [inputValue, setInputValue] = React.useState<string>('');
@@ -54,12 +54,15 @@ function Form() {
     }
   };
 
+  useEffect(() => {
+    if (inputValue !== '' && todolist) {
+      setError('');
+    }
+  }, [todolist, inputValue]);
+
   return (
     <section className={styles.formContainer}>
-      <form
-        className={cn(styles.form, error !== '' ? styles.form_error : '')}
-        onSubmit={(e) => submitForm(e)}
-      >
+      <form className={cn(styles.form, error !== '' ? styles.form_error : '')} onSubmit={(e) => submitForm(e)}>
         <fieldset className={styles.fieldset}>
           <input
             className={styles.input}
