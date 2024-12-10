@@ -22,11 +22,11 @@ const Item: React.FC<Props> = ({ elem }) => {
 
   function handlerClickButtonRemove() {
     dispatch(removeItem(elem.id));
-  }
+  };
 
   function handlerClickCheckbox() {
     dispatch(completedItem(elem.id, !elem.status));
-  }
+  };
 
   return (
     <li className={styles.item}>

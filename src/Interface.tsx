@@ -6,21 +6,11 @@ interface ItemProps {
 }
 
 interface ArrayProps {
-  todolist: Array<{
-    id: number;
-    text: string;
-    status: boolean;
-    day: string;
-  }>;
-  searchResults?: Array<{
-    id: number;
-    text: string;
-    status: boolean;
-    day: string;
-  }>;
-  searching?: boolean;
-  sortType?: string;
-  error?: string
+  todolist: ItemProps[];
+  searchResults: ItemProps[];
+  searching: boolean;
+  sortType: string;
+  error: string
 }
 
 interface PopupProps {

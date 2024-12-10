@@ -1,5 +1,5 @@
 import { Reducer, AnyAction } from 'redux';
-import { ArrayProps, ItemProps } from '../Interface';
+import { ArrayProps, ItemProps } from '../../Interface';
 
 const initialState: ArrayProps = {
   todolist: [],
@@ -11,7 +11,7 @@ const initialState: ArrayProps = {
 
 let idCounter = 0;
 
-export const listTasks: Reducer<ArrayProps, AnyAction> = (state = initialState, action) => {
+const listTasks: Reducer<ArrayProps, AnyAction> = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_ITEM':
       const today = new Date();
@@ -30,12 +30,11 @@ export const listTasks: Reducer<ArrayProps, AnyAction> = (state = initialState, 
       };
     case 'REMOVE_ITEM':
       const updateList = state.todolist.filter((el) => el.id !== action.payload);
-      const updatedSearch = state.searchResults;
 
       return {
         ...state,
         todolist: updateList,
-        updatedSearch
+        searchResults: state.searchResults.filter((el) => el.id !== action.payload),
       };
     case 'COMPLETED_ITEM':
       const updatedTodoList = state.todolist.map((el) => {
@@ -85,3 +84,5 @@ export const listTasks: Reducer<ArrayProps, AnyAction> = (state = initialState, 
       return state;
   }
 };
+
+export default listTasks;

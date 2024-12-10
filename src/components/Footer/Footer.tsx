@@ -5,14 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { completedItem, changeSortType } from '../../store/actions/actions';
 import { RootState } from '../../store/store';
 
+import { ItemProps } from '../../Interface';
 
 import styles from './Footer.module.css';
-import { ItemProps } from '../../Interface';
 
 function Foooter() {
   const dispatch = useDispatch();
 
-  const todolist = useSelector((state: RootState) => state.listTasks.todolist);
+  const { todolist } = useSelector((state: RootState) => state.listTasks.listTasks);
 
   const [isActiveBtn, setIsActiveBtn] = useState<string>('all');
 
@@ -27,7 +27,7 @@ function Foooter() {
     });
   };
 
-  function handlerClickBtnSorting (data: string) {
+  function handlerClickBtnSorting(data: string) {
     setIsActiveBtn(data);
     dispatch(changeSortType(data));
   };
