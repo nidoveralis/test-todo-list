@@ -17,11 +17,10 @@ function Foooter() {
   const [isActiveBtn, setIsActiveBtn] = useState<string>('all');
 
   const noCompletedItem = todolist.filter((item: ItemProps) => !item.status);
+  const checkList = todolist.filter((el: ItemProps) => el.status);
+  const isCheck = checkList.length === todolist.length;
 
   function handlerClickBtnClearCompleted() {
-    const checkList = todolist.filter((el: ItemProps) => el.status);
-    const isCheck = checkList.length === todolist.length;
-
     todolist.forEach((el: ItemProps) => {
       dispatch(completedItem(el.id, !isCheck))
     });
@@ -53,7 +52,8 @@ function Foooter() {
         className={cn(styles.footer__button, todolist.length === 0 ? styles.footer__button_disabled : '')}
         disabled={todolist.length === 0}
         onClick={handlerClickBtnClearCompleted}
-      >Clear completed</button>
+        style={{ visibility: todolist.length > 0 ? 'visible' : 'hidden' }}
+      >{isCheck ? 'Clear completed' : 'All completed'}</button>
     </div >
   )
 }
