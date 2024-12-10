@@ -12,6 +12,7 @@
   border: none;
   cursor: pointer;
   margin: 0 10px;
+  width: 140px;
 }
 
 .footer__button_disabled {
